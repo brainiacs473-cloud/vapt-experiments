@@ -1,0 +1,10 @@
+site:testphp.vulnweb.com
+site:ves.ac.in ext:doc
+site:example.com ext:sql
+site:example.com inurl:admin
+more commands-
+intitle: Search text in page title
+inurl: Search text in URL
+filetype: Search specific file types
+cache: View cached version of
+ext: File extension search
