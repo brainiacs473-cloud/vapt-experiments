@@ -1,0 +1,7 @@
+Enter the target IP address range
+ Select scan methods: ICMP (Ping) /TCP ports
+ Choose suggested ports such as: 21 (FTP) /22 (SSH) /80 (HTTP) /443 (HTTPS)
+ Click the Start button to initiate scanning
+ For each detected host, observe: IP address, Hostname, MAC address, Open ports,
+Response time
+ Export scan results in formats such as: CSV /TXT /XML
