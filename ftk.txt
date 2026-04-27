@@ -1,0 +1,19 @@
+Procedure:
+1. Launch FTK Imager
+2. Download Official Government Testing Data: https://cfreds.nist.gov/ (Forensic images for testing)
+3. Open website, Click &quot;Disk Images&quot;, Download sample images like- hacking cases, email
+investigation etc.
+4. Create Disk Image: File → Create Disk Image (Source Type : Image File) →click Next
+5. Select Image Format: E01 (Recommended)
+6. Select Destination: Choose Output Folder → Verify images after they are created
+7. Observe acquisition details:
+7.1 File → Add Evidence Item → Image File
+7.2 Right click on image and check properties
+8. Observing Hash Values:
+8.1 File → Verify Image
+8.2 Right Click File → Export File Hash List
+9. Observing File Metadata:
+9.1 Select any file → Right panel shows: Created Date/Modified Date/Accessed Date/File
+Size/MD5 Hash
+10. Check for deleted files: Volume → Partition → $Recycle.Bin (Look for files marked with red
+cross)
