@@ -1,0 +1,11 @@
+ping example.com
+nmap -sn <target_network>
+nmap -sT <target_IP>
+nmap -sS <target_IP>
+nmap -sU <target_IP>
+nmap -sV <target_IP>
+nmap -O <target_IP>
+nc <target_IP> 80
+telnet <target_IP> 21
+whatweb http://<target_IP>
+nikto -h http://<target_IP>
