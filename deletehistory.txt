@@ -1,0 +1,4 @@
+for deleting folder-
+rm -rf vapt-experiments
+for deleting command history-
+fc -p
