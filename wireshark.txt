@@ -1,0 +1,22 @@
+Procedure:
+1. Connect your system and the target test system to the same lab network or run both on
+the same machine using localhost
+2. Make sure you enter ‘http’ directions for browsing
+3. Open Wireshark, select the correct network interface and click on Start Capturing
+Packets.
+4. Use ‘http’ filter or filter by IP ‘ip.addr == &lt;target_IP&gt;’
+5. On your browser, open the target HTTP site
+6. Navigate to the login page
+7. Enter test credentials (Make sure trial test credentials are entered)
+8. Submit the form and keep the session active
+9. In Wireshark, stop the capture after login.
+10. Go to Edit → Find Packet.
+11. Select String and search for the username you entered. You should see the HTTP POST
+request containing credentials.
+12. In the same HTTP POST response or subsequent GET requests, look for the Cookie
+header
+13. Copy the PHPSESSID or any session token.
+14. Install a cookie editor extension and inject the copied session ID into the cookie storage
+for the same site.
+15. Refresh — you should be logged in as the captured user
+16. Log out from original browser and check whether hijacked session remains active.
