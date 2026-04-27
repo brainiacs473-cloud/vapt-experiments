@@ -3,7 +3,7 @@ nslookup <target_website>
 dig <target_website>9
 dig mx <target_website>
 dig ns <target_website>
-theHarvester -d <target_website> -l 100 -b all <target_website_name_only>
+theHarvester -d <target_website> -l 100 -b <search_engine>
 
 for shodan:
 go to shodan website and login into the account 
