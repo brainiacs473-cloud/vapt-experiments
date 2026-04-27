@@ -1,0 +1,15 @@
+Procedure-
+Launch Autopsy (Run as Administrator).
+Create New Case
+Select type of Data source to add, Select Disk Image, Browse and select E01 image
+3. Enable : File Type Identification, Keyword Search, Hash Lookup, Web Artifacts, Email Parser, Recent
+Activity, Timeline and click finish
+4. Image created
+5. Observer artifacts:
+5.1 Deleted Files: Views → Deleted Files
+5.2 Browser artifacts: Results → Web Artifacts (observer- Visited URLs, Search Queries,
+Download History)
+5.3 Email Analysis: Results → Email Messages (observe- sender, receiver, attachments)
+5.4 Executable Files: Filter by extension- ‘.exe’
+6. Observer timeline analysis: Click: Tools → Timeline
+7. Select Date Range
